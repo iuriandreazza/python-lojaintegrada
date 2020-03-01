@@ -80,16 +80,16 @@ class Api(object):
         url = '{}{}'.format(self.root_uri, uri)
         return self._make_request('GET', url)
 
-    def get_clients(self):
+    def get_clients(self, limit=50):
         """Returns a generator containing clients.
 
                 Raises:
                 -------
                     - ApiError
                 """
-        uri = '/api/{}/clientes/'.format(self.version)
+        uri = '/api/{}/cliente/'.format(self.version)
         url = '{}{}'.format(self.root_uri, uri)
-        return self._make_request('GET', url)
+        return self._get_objects(url, limit=limit)
 
     def get_orders(self, limit=50, **filters):
         """Returns a generator containing orders."""
