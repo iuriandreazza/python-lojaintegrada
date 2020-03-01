@@ -80,6 +80,17 @@ class Api(object):
         url = '{}{}'.format(self.root_uri, uri)
         return self._make_request('GET', url)
 
+    def get_clients(self):
+        """Returns a generator containing clients.
+
+                Raises:
+                -------
+                    - ApiError
+                """
+        uri = '/api/{}/clientes/'.format(self.version)
+        url = '{}{}'.format(self.root_uri, uri)
+        return self._make_request('GET', url)
+
     def get_orders(self, limit=50, **filters):
         """Returns a generator containing orders."""
         uri = '/api/{}/pedido/search'.format(self.version)
